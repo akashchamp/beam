@@ -141,6 +141,7 @@
 * (Python) `KeyedModelHandler` and `MaybeKeyedModelHandler` now apply the `element_size_fn` and `batch_length_fn` of the wrapped `ModelHandler` to examples, instead of to `(key, example)` pairs ([#40644](https://github.com/apache/beam/issues/40644)).
 * (Python) DataFrame API: `drop_duplicates`, `duplicated` and `nunique` no longer fail on rows with NaN values or on categorical columns with unused categories, and `nunique(dropna=False)` now counts NaN ([#40570](https://github.com/apache/beam/issues/40570)).
 * (Java) BigQuery Storage Write API `TableRow` conversion now honors `allowMissingRequiredFields` when building protocol-buffer messages, so callers that pass `true` with required descriptors get partial messages instead of a conversion-time `UninitializedMessageException` ([#40189](https://github.com/apache/beam/issues/40189)).
+* (Java) Fixed the Spark Structured Streaming runner leaking cached intermediate `Dataset`s for multi-output `ParDo`s, which were persisted but never unpersisted in `ParDoTranslatorBatch` ([#40243](https://github.com/apache/beam/issues/40243)).
 * Fixed X (Java/Python) ([#X](https://github.com/apache/beam/issues/X)).
 
 ## Security Fixes
